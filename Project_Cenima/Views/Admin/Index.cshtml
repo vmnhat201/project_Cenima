@@ -1,0 +1,60 @@
+﻿
+@model Rate
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>List Rate</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                MovieID
+            </th>
+            <th>
+                PersonID
+            </th>
+            <th>
+                Comment
+            </th>
+            <th>
+                NumericRating
+            </th>
+            <th>
+                Time
+            </th>
+           
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Rat)
+        {
+        <tr>
+            <td>
+                @item.MovieId
+            </td>
+            <td>
+                @item.PersonId
+            </td>
+            <td>
+                @item.Comment
+            </td>
+            <td>
+                @item.NumericRating
+            </td>
+            <td>
+                @item.Time
+            
+
+
+        </tr>
+        }
+    </tbody>
+</table>

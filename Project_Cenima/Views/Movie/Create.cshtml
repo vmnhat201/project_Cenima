@@ -1,0 +1,60 @@
+﻿@model Movie
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration</h3>
+                    <form method="post">
+
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        @*<label asp-for="Gender" class="control-label"></label>
+                            <input asp-for="Gender"  class="form-control" />
+                            <span asp-validation-for="Gender" class="text-danger"></span>*@
+                        @*</div>*@
+                        <div class="form-group">
+                            <label asp-for="Year" class="control-label"></label>
+                            <input asp-for="Year" type="text" class="form-control" />
+                            <span asp-validation-for="Year" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Image" class="control-label"></label>
+                            <input asp-for="Image" type="text" class="form-control" />
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            <input asp-for="Description" type="text" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="GenreId" class="control-label"></label>
+                            <input asp-for="GenreId" type="text" class="form-control">
+                            <span asp-validation-for="GenreId" class="text-danger"></span>
+                        </div>
+                        @*<input type="hidden" asp-for="Type" value="2" />*@
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

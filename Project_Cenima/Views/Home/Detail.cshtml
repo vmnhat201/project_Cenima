@@ -1,0 +1,115 @@
+﻿
+@model Project_Cenima.Models.Rate
+@{
+    ViewBag.Title = "MovieDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @*<img src="~/img/@Model.Image" />*@
+            @*<img src="D:/VSCode/Project_PRN211/Project_PRN211/img/baongam.jpg" />*@
+            @*<img src="~/img/@Model.Image" />*@
+            <img class="media-object" src="~/img/@ViewBag.Movie.Image" />
+        </div>
+        <div class="col-md-9">
+            <h1 class="box-title mt-5">@ViewBag.Movie.Title</h1>
+            @*<p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+
+        <h6>The loai</h6>
+        <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+        <h6>mo ta</h6> <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>*@
+
+
+            <p>
+                <b> Thể Loại:  </b> @ViewBag.Movie.Genre.Description
+            </p>
+            <p>
+                <b> Điểm đánh giá:  </b> @ViewBag.numberRate
+            </p>
+            <p>
+                <b> Mô tả:  </b> @ViewBag.Movie.Description
+            </p>
+
+            @if (ViewBag.Id == null)
+            {
+                <button type="button" class="btn btn-outline-primary"><a href="/Home/Login">Đánh Gía</a></button><br>
+            }
+            else /*if(ViewBag.Id.Type!=1)*/
+            {
+        <form class="post" asp-action="Comment">
+            <input type="hidden" asp-for="MovieId" value="@ViewBag.Movie.MovieId" />
+            <input type="hidden" asp-for="PersonId" value="@ViewBag.Id" />
+            <div class="form-group">
+                <label>Điểm đánh giá: </label>
+                <input class="form-control" type="number" asp-for="NumericRating" />
+                <span asp-validation-for="NumericRating"class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Comment" for="exampleFormControlTextarea1">Comment</label>
+                <textarea asp-for="Comment" class="form-control" id="exampleFormControlTextarea1"></textarea>
+            </div>
+            <input type="hidden" asp-for="Time" value="@DateTime.Now" />
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Đánh giá"  />
+            </div>
+        </form>
+                
+            }
+
+
+            <h3>Bình Luận :</h3>
+
+            @foreach (var item in ViewBag.ARate)
+            {
+                <p class="text-monospace">
+                    @item.Person.Fullname :  @item.Comment
+                </p>
+            }
+
+
+
+
+        </div>
+
+    </div>
+
+</div>
+@*N.K Tuấn Anh
+@if (ViewBag.Log == null)
+{
+    <a href="/Home/Login"><button class="btn btn-primary">Đánh giá</button></a>
+}
+else if (ViewBag.Log.Type != 1)
+{
+    <div id="evaluation">
+        <div class="panel-body">
+            <form method="post" asp-action="Comment" role="form">
+                <input type="hidden" name="PersonId" value="@ViewBag.Log.PersonId" />
+                <input type="hidden" name="MovieId" value="@ViewBag.mo.MovieId" />
+                <div class="form-group">
+                    <label>Điểm đánh giá: </label>
+                    <input class="form-control" type="number" asp-for="NumericRating" value="@ViewBag.rate" />
+                    <span asp-validation-for="NumericRating"></span>
+                </div>
+                <div class="form-group">
+                    <label>Bình luận: </label>
+                    @if (ViewBag.com != null)
+                    {
+                        <input class="form-control" asp-for="Comment" value="@ViewBag.com" disabled />
+                        <span asp-validation-for="Comment"></span>
+                    }
+                    else
+                    {
+                        <input class="form-control" asp-for="Comment" value="" />
+                        <span asp-validation-for="Comment"></span>
+                    }
+                </div>
+                <button class="btn btn-primary">Đánh giá</button>
+            </form>
+        </div>
+    </div>
+}*@

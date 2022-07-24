@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Genre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-sm-3">
+                <h3>Thể Loại</h3>
+
+                <ul>
+                    @foreach (var item in ViewBag.Genre)
+                    {
+
+                        <a href="/Home/Genre?Id=@item.GenreId">
+                        <li>@item.Description</li> </a>
+                    }
+                </ul>
+
+            </div>
+            <div class="col-sm-9 padding-right">
+
+                <div class="row">
+                    @foreach (var item in ViewBag.Movie)
+                    {
+                        int count = 0;
+                        double sum = 0;
+                        <div class="col-md-3" style="margin-bottom: 13px">
+                            <div class="card">
+
+                                <img src="~/img/@item.Image" class="card-img-top" style="height: 150px" />
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Title</h5>
+                                    <div class="card-text">
+                                        <p>Năm: @item.Year</p>
+                                        <p>Loại: @item.Genre.Description</p>
+                                        @foreach (var rate in ViewBag.Rate)
+                                        {
+                                            if (item.MovieId == rate.MovieId)
+                                            {
+                                                sum += (double)rate.NumericRating;
+                                                count++;
+                                            }
+                                        }
+                                        @if (sum != 0)
+                                        {
+                                    <p>Điểm: @(Math.Round((double)sum/count,2))</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Điểm: </p>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="text-center" style="padding-bottom: 15px">
+                                    <a href="/Home/Detail?id=@item.MovieId"> <button class="btn btn-primary ">Đánh giá</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

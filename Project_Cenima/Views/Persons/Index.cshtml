@@ -1,0 +1,75 @@
+﻿
+<h1>List Preson</h1>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                PersonID
+            </th>
+            <th>
+                FullName
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Email
+            <th>
+                Password
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                IsActve
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.listP)
+        {
+            <tr>
+                <td>
+                    @item.PersonId
+                </td>
+                <td>
+                    @item.Fullname
+                </td>
+                <td>
+                    @item.Gender
+                </td>
+                <td>
+                    @item.Email
+
+                </td>
+                <td>
+                    @item.Password
+                </td>
+                <td>
+                    @item.Type
+                </td>
+                <td>
+                    @item.IsActive
+                </td>
+
+
+                <td>
+                    <a href="/Persons/Edit?id=@item.PersonId">Edit</a> |
+                    @*<a asp-page="/Edit" asp-route-id="@item.MovieId">Edit</a> |*@
+                    @*<a href="/Home/Detail?Id=">Details</a> |*@
+                    <a href="/Persons/Delete?id=@item.PersonId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

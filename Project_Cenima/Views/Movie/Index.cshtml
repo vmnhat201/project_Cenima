@@ -1,0 +1,71 @@
+﻿
+@model Movie
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>List Movie</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                MovieID
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Genre
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.listM)
+        {
+            <tr>
+                <td>
+                    @item.MovieId
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Year
+                </td>
+                <td>
+                    <img style="height:40px;width:40px" src="~/img/@item.Image" />
+
+                </td>
+                <td>
+                    @item.Description
+                </td>
+
+
+                <td>
+                    <a href="/Movie/Edit?id=@item.MovieId">Edit</a> |
+                    @*<a asp-page="/Edit" asp-route-id="@item.MovieId">Edit</a> |*@
+                    <a href="/Home/Detail?Id=@item.MovieId">Details</a> |
+                    <a href="/Movie/Delete?id=@item.MovieId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

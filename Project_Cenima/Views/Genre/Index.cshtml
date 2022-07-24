@@ -1,0 +1,47 @@
+﻿
+@model Genre
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>List Genre</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                MovieID
+            </th>
+            <th>
+                Title
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.listG)
+        {
+            <tr>
+                <td>
+                    @item.GenreId
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                
+                <td>
+                    <a href="/Genre/Edit?id=@item.GenreId">Edit</a> |
+                    @*<a asp-page="/Edit" asp-route-id="@item.MovieId">Edit</a> |
+                    <a href="/Home/Detail?Id=">Details</a> |*@
+                    <a href="/Genre/Delete?id=@item.GenreId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
